@@ -1,12 +1,23 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
-
-    public void StartGame()
+    public TMP_InputField NameInput;
+    public string name;
+    public void Awake()
     {
-        SceneManager.LoadScene(1);
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    
+    public void UpdateName()
+    {
+        name = NameInput.text;
     }
 }

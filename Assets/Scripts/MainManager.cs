@@ -26,6 +26,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadScore();
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
 
@@ -102,7 +103,7 @@ public class MainManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             h_Points = data.HighScore;
         }
-        HighScoreText.text = $"Best Score: {h_Points} Name: ";
+        HighScoreText.text = $"Best Score: {h_Points} Name: {MenuManager.Instance.name}";
     }
 }
 
